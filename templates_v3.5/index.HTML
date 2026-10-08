@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+
+    <style>
+
+        body {
+            position: relative;
+            margin: 0;
+        }
+        
+        /*This is here so the image stays in the center of the screen */
+        img {
+            text-align: center;
+            
+            size: 500px;
+
+        }
+
+        /* This customizes the design of the top navigation bar to make it different sizes and colors*/
+        .topnav {
+            background-color: #333;
+            overflow: hidden;
+            margin-top: 5px;
+        }
+        
+        .topnav a {
+            float: left;
+            color: #ddd;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+        }
+        
+        .topnav a:hover {
+            background-color: #ddd;
+            transition: background-color 0.2s ease;
+            color: black;
+        }
+        
+        .topnav a.active {
+            background-color: #aa0404;
+            color: white;
+        }
+        
+        /* the top navagation search bar  */
+        .topnav input[type=text] {
+            float: left;
+            width: 300px; /* This is the total width of the nav bar as a whole */
+            padding: 7px;
+            margin-top: 6px;
+            margin-right: 16px;
+            font-size: 17px;
+        }
+
+        /* Customizes the container for the filter controls */
+        .filter {
+            margin-top: 40px;
+            margin-left: 100px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Customizes how the filter select dropdown looks */
+        .filter select {
+            height: 35px;
+            padding: 5px 10px;
+            background-color: #e0e0e0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        /* This customizes how the filter button would look */
+        .filter button {
+            width: 75px;
+            height: 35px;
+            padding: 5px 15px;
+            background-color: #aa0404;
+            color: white;
+            border: 1px solid #aa0404;
+            border-radius: 5px;
+            cursor: pointer; /* This makes the button look clickable when hovering with the cursor */
+            font-weight: bold;
+        }
+
+        /* This changes the color of the filter button upon hovering with a cursor */
+        .filter button:hover {
+            background-color: #880303;
+        }
+
+        /* This makes sure that the Logo image stays directly in the center of the screen */
+        .logo-image {
+            display: flex; /* Forms a flexbox layout system */
+            align-items: center;     
+            justify-content: center; 
+            gap: 0px;               
+            margin-bottom: 20px;
+        }
+
+        .logo-image h1{
+            font-size: 100px;
+        }
+
+        /*This makes sure that the side decorations stay on the sides*/
+        .left-side-img, .right-side-img{
+            position: absolute;
+            z-index: -1;
+
+            width: 75px;
+            top: 0;
+            bottom: 0;
+            background-image: url('/static/images/sides.png'); /* the link to the images */
+            background-repeat: repeat-y;
+
+        }
+
+        .left-side-img {
+            left: 0; /* makes sure the decoration is stuck on the left */
+        }
+
+        .right-side-img {
+            right: 0; /* makes sure the decoration is stuck on the right */
+        }
+
+        .side-images {
+            margin-left: 10px;  
+            display: flex;
+        }
+
+        .data-box {
+            background-color: #cfcfcf;
+            width: 1300px;
+            max-width: 1300px;
+            margin: 40px auto;
+            height: auto; /* allows the grey box to follow the amount content inside */
+            min-height: 500px; /* Creates the minimal height */
+            border-radius: 8px;
+            padding: 20px 0 40px 0; /* Adds space inside the container box */
+            box-sizing: border-box;
+        }
+
+        /* Customizes the table and creates vertical space between rows */
+        .data-table {
+            width: 95%;
+            margin: 0 auto; 
+            border-collapse: separate; /* Allows rows to detach from each other */
+            border-spacing: 0 10px; /* Creates 10px of empty space between each row rectangle */
+            font-family: sans-serif;
+        }
+
+        /* Adds padding to create space inside the rectangles */
+        .data-table th, .data-table td {
+            padding: 15px 20px; 
+            text-align: left;
+        }
+
+        /* Gives the table header its own distinct styling */
+        .data-table th {
+            background-color: #888888; 
+            color: #333;
+            font-weight: bold;
+        }
+
+        /* Rounds the edges for the header row */
+        .data-table th:first-child {
+            border-top-left-radius: 6px;
+            border-bottom-left-radius: 6px;
+        }
+        .data-table th:last-child {
+            border-top-right-radius: 6px;
+            border-bottom-right-radius: 6px;
+        }
+
+        /* Styles the individual records (rows) to look like rectangles */
+        .data-table tbody tr {
+            background-color: #b3b3b3; /* Base color for the rectangles */
+            transition: background-color 0.2s ease; /* Adds a smooth fade effect on hover */
+        }
+
+        /* Rounds the corners for each individual rectangular record */
+        .data-table tbody tr td:first-child {
+            border-top-left-radius: 6px;
+            border-bottom-left-radius: 6px;
+        }
+        .data-table tbody tr td:last-child {
+            border-top-right-radius: 6px;
+            border-bottom-right-radius: 6px;
+        }
+
+        /* Turns the rectangle dark and the text white when the cursor hovers over it */
+        .data-table tbody tr:hover, 
+        .data-table tbody tr:hover td {
+            background-color: #aa0404 !important; 
+            color: #ffffff !important; 
+            cursor: pointer; 
+        }
+        
+    </style>
+
+</head>
+<body>
+
+    
+
+    <div class="right-side-img"></div>
+    <div class="left-side-img"></div>
+
+    <!--This class loads the main Logo image into the system-->
+    <div class="logo-image">
+        <a href="/">
+            <img src="/static/images/PJ_Logo.png" alt="PJ Logo" width="400"> <!--This is the directory of the logo-->
+        </a>
+        <h1>VGI</h1>
+    </div>
+
+    <!--This class creates the assets for the top navigation bar and the multi-purpose searchbar-->
+<div class="topnav">
+    <a class="active" href="/">Home</a>
+    <a href="/most-selling">Most Selling</a>
+    <a href="/game_genres">Game Genres</a>
+    <a href="/developed_games">Developed Games</a>
+    <a href="/published_games">Published Games</a>
+    <a href="/about">About</a>
+
+    <form action="/" method="GET" style="display:inline;">
+        {% if current_sort %}
+            <input type="hidden" name="sort" value="{{ current_sort }}">
+        {% endif %}
+        <input type="text" name="q" placeholder="Search..." value="{{ search_query }}">
+    </form>
+</div>
+
+
+<form class="filter" action="/" method="GET">
+    {% if search_query %}
+        <input type="hidden" name="q" value="{{ search_query }}">
+    {% endif %}
+    <select name="sort">
+        <option value="id_asc" {% if current_sort == 'id_asc' %}selected{% endif %}>Default (ID)</option>
+        <option value="game_asc" {% if current_sort == 'game_asc' %}selected{% endif %}>Game Title (A-Z)</option>
+        <option value="game_desc" {% if current_sort == 'game_desc' %}selected{% endif %}>Game Title (Z-A)</option>
+        <option value="sales_desc" {% if current_sort == 'sales_desc' %}selected{% endif %}>Sales (Highest First)</option>
+        <option value="developer_asc" {% if current_sort == 'developer_asc' %}selected{% endif %}>Developer (A-Z)</option>
+        <option value="publisher_asc" {% if current_sort == 'publisher_asc' %}selected{% endif %}>Publisher (A-Z)</option>
+        <option value="series_asc" {% if current_sort == 'series_asc' %}selected{% endif %}>Series (A-Z)</option>
+    </select>
+    <button type="submit">Filter</button>
+</form>
+
+
+
+
+    <div class="data-box"> <!--This class creates the dark grey box that the data will rest on-->
+        <table class="data-table"> <!--This table is the data that will rest on the grey box-->
+            <thead>
+                <tr>
+                    <th>Gameid</th>
+                    <th>Game Title</th>
+                    <th>Sales (Millions)</th>
+                    <th>Series</th>
+                    <th>Developer</th>
+                    <th>Publisher</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for game in games %}
+                <tr>
+                    <td>{{ game['Gameid'] }}</td>
+                    <td>{{ game['Game'] }}</td>
+                    <td>{{ game['Sales'] }}</td>
+                    <td>{{ game['Series'] if game['Series'] and game['Series'] != 'None' else '-' }}</td>
+                    <td>{{ game['Developer'] }}</td>
+                    <td>{{ game['Publisher'] }}</td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="6" style="text-align: center; padding: 30px; font-weight: bold; color: #555;">
+                        No games found matching "{{ search_query }}".
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
